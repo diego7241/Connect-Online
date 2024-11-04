@@ -1,0 +1,142 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+}
+
+/* Header Styles */
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5em;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section Styles */
+#catalogo {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2em;
+    text-align: center;
+}
+
+#catalogo h2 {
+    margin-bottom: 1em;
+    font-size: 2em;
+    color: #333;
+}
+
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Product Card Styles */
+.producto {
+    border: 1px solid #ddd;
+    padding: 16px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    background-color: white;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.producto h3 {
+    font-size: 18px;
+    margin: 8px 0;
+    color: #333;
+}
+
+.producto p {
+    font-size: 14px;
+    margin: 8px 0;
+    color: #555;
+}
+
+.producto a {
+    display: inline-block;
+    margin-top: 8px;
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.producto a:hover {
+    background-color: #45a049;
+}
+
+/* Footer Styles */
+footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0.5em 0;
+}
+
+footer a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

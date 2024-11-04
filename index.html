@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Online - Catálogo de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Connect Online</h1>
+        <nav>
+            <ul>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Catálogo de Productos -->
+    <section id="catalogo">
+        <h2>Catálogo de Productos</h2>
+        <div id="productos"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Connect Online. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:contacto@connectonline.com">contacto@connectonline.com</a></p>
+    </footer>
+
+    <script>
+        const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQuT2RZdqn_6UBkAn-u90NFmHWyWlRfLqjL3v9rOLJ3c1JX4fum_ZMi8f_3KNv6vL394IsRhBAIMLJJ/pub?gid=0&single=true&output=csv";
+
+        function mostrarProductos(data) {
+            const contenedor = document.getElementById("productos");
+            contenedor.innerHTML = "";
+
+            const filas = data.split("\n").slice(1);
+            filas.forEach(fila => {
+                const [nombre, descripcion, precio, imagen, contacto] = fila.split(",");
+
+                const tarjeta = document.createElement("div");
+                tarjeta.classList.add("producto");
+                tarjeta.innerHTML = `
+                    <img src="${imagen}" alt="${nombre}">
+                    <h3>${nombre}</h3>
+                    <p>${descripcion}</p>
+                    <p>Precio: ${precio}</p>
+                    <a href="https://wa.me/52${contacto}" target="_blank">Contáctanos por WhatsApp</a>
+                `;
+                contenedor.appendChild(tarjeta);
+            });
+        }
+
+        fetch(url)
+            .then(response => response.text())
+            .then(data => mostrarProductos(data))
+            .catch(error => console.error('Error al obtener los datos:', error));
+    </script>
+</body>
+
+</html>
