@@ -21,6 +21,17 @@
         </nav>
     </header>
 
+    <!-- Filtros y Buscador -->
+    <section id="filtros">
+        <input type="text" id="buscador" placeholder="Buscar productos..." oninput="filtrarProductos()">
+        <select id="categoria" onchange="filtrarProductos()">
+            <option value="">Todas las categorías</option>
+            <option value="Electrónica">Electrónica</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Hogar">Hogar</option>
+        </select>
+    </section>
+
     <!-- Catálogo de Productos -->
     <section id="catalogo">
         <h2>Catálogo de Productos</h2>
@@ -42,18 +53,38 @@
 
             const filas = data.split("\n").slice(1);
             filas.forEach(fila => {
-                const [nombre, descripcion, precio, imagen, contacto] = fila.split(",");
+                const [nombre, descripcion, precio, imagen, contacto, categoria] = fila.split(",");
 
                 const tarjeta = document.createElement("div");
                 tarjeta.classList.add("producto");
+                tarjeta.setAttribute("data-categoria", categoria.trim()); // Agregar atributo para la categoría
                 tarjeta.innerHTML = `
-                    <img src="${imagen}" alt="${nombre}">
-                    <h3>${nombre}</h3>
-                    <p>${descripcion}</p>
-                    <p>Precio: ${precio}</p>
-                    <a href="https://wa.me/51${contacto}" target="_blank">Contáctanos por WhatsApp</a>
+                    <img src="${imagen.trim()}" alt="${nombre.trim()}">
+                    <h3>${nombre.trim()}</h3>
+                    <p>${descripcion.trim()}</p>
+                    <p>Precio: ${precio.trim()}</p>
+                    <a href="https://wa.me/52${contacto.trim()}" target="_blank">Contáctanos por WhatsApp</a>
                 `;
                 contenedor.appendChild(tarjeta);
+            });
+        }
+
+        function filtrarProductos() {
+            const buscador = document.getElementById("buscador").value.toLowerCase();
+            const categoria = document.getElementById("categoria").value;
+            const tarjetas = document.querySelectorAll('.producto');
+
+            tarjetas.forEach(tarjeta => {
+                const nombre = tarjeta.querySelector("h3").textContent.toLowerCase();
+                const tarjetaCategoria = tarjeta.getAttribute("data-categoria").toLowerCase(); // Convertir a minúsculas
+                const coincideBuscador = nombre.includes(buscador);
+                const coincideCategoria = !categoria || tarjetaCategoria === categoria.toLowerCase(); // Comparar en minúsculas
+
+                if (coincideBuscador && coincideCategoria) {
+                    tarjeta.style.display = "block";
+                } else {
+                    tarjeta.style.display = "none";
+                }
             });
         }
 
