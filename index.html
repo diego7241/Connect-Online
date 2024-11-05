@@ -11,31 +11,54 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>Connect Online</h1>
-        <nav>
-            <ul>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#about">Sobre Nosotros</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo de Connect Online" class="logo">
+            </div>
+            <nav>
+                <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+                <ul id="menu">
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#about">Sobre Nosotros</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <select id="categoria" onchange="filtrarProductos()">
+                    <option value="">Todas las categorías</option>
+                    <option value="Electrónica">Electrónica</option>
+                    <option value="Ropa">Ropa</option>
+                    <option value="Hogar">Hogar</option>
+                </select>
+                <input type="text" id="buscador" placeholder="Buscar productos..." oninput="filtrarProductos()">
+            </div>
+        </div>
     </header>
-
-    <!-- Filtros y Buscador -->
-    <section id="filtros">
-        <input type="text" id="buscador" placeholder="Buscar productos..." oninput="filtrarProductos()">
-        <select id="categoria" onchange="filtrarProductos()">
-            <option value="">Todas las categorías</option>
-            <option value="Electrónica">Electrónica</option>
-            <option value="Ropa">Ropa</option>
-            <option value="Hogar">Hogar</option>
-        </select>
-    </section>
 
     <!-- Catálogo de Productos -->
     <section id="catalogo">
         <h2>Catálogo de Productos</h2>
         <div id="productos"></div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Bienvenido a Connect Online, donde ofrecemos una amplia gama de productos para satisfacer tus necesidades.
+            Nuestra misión es proporcionar calidad y servicio excepcional a nuestros clientes. Con años de experiencia
+            en el mercado, trabajamos arduamente para asegurar que nuestros productos cumplan con los más altos
+            estándares.</p>
+        <p>Estamos comprometidos con la innovación y la sostenibilidad, y creemos en la importancia de brindar un
+            ambiente amigable para nuestros clientes y colaboradores.</p>
+    </section>
+
+    <!-- Sección de Contacto (Estática) -->
+    <section id="contact">
+        <h2>Contacto</h2>
+        <p>¿Tienes alguna pregunta o comentario? No dudes en ponerte en contacto con nosotros a través de los siguientes
+            medios:</p>
+        <p>Teléfono: +51 123 456 789</p>
+        <p>Email: <a href="mailto:contacto@connectonline.com">contacto@connectonline.com</a></p>
     </section>
 
     <!-- Footer -->
@@ -57,7 +80,7 @@
 
                 const tarjeta = document.createElement("div");
                 tarjeta.classList.add("producto");
-                tarjeta.setAttribute("data-categoria", categoria.trim()); // Agregar atributo para la categoría
+                tarjeta.setAttribute("data-categoria", categoria.trim());
                 tarjeta.innerHTML = `
                     <img src="${imagen.trim()}" alt="${nombre.trim()}">
                     <h3>${nombre.trim()}</h3>
@@ -76,9 +99,9 @@
 
             tarjetas.forEach(tarjeta => {
                 const nombre = tarjeta.querySelector("h3").textContent.toLowerCase();
-                const tarjetaCategoria = tarjeta.getAttribute("data-categoria").toLowerCase(); // Convertir a minúsculas
+                const tarjetaCategoria = tarjeta.getAttribute("data-categoria").toLowerCase();
                 const coincideBuscador = nombre.includes(buscador);
-                const coincideCategoria = !categoria || tarjetaCategoria === categoria.toLowerCase(); // Comparar en minúsculas
+                const coincideCategoria = !categoria || tarjetaCategoria === categoria.toLowerCase();
 
                 if (coincideBuscador && coincideCategoria) {
                     tarjeta.style.display = "block";
@@ -86,6 +109,11 @@
                     tarjeta.style.display = "none";
                 }
             });
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("show");
         }
 
         fetch(url)
