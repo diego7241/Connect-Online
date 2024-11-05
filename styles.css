@@ -11,59 +11,168 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f4f4f9;
+    /* Fondo claro para el contenido principal */
+    color: #333;
+    /* Texto oscuro por defecto */
 }
 
 /* Header Styles */
 header {
     width: 100%;
-    background-color: #333;
+    background-color: #444;
+    /* Fondo más claro que antes para el header */
     color: white;
     padding: 1em 0;
-    text-align: center;
 }
 
-header h1 {
-    margin-bottom: 0.5em;
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Espacio entre logo, nav y búsqueda */
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Centrar en la página */
+    flex-wrap: wrap;
+    /* Permitir que los elementos se ajusten a nuevas líneas */
 }
 
-header nav ul {
+.logo-container {
+    flex: 1;
+    /* Tomar espacio disponible */
+}
+
+.logo {
+    width: 150px;
+    /* Ajusta el tamaño del logo según sea necesario */
+}
+
+nav {
+    flex: 2;
+    /* Tomar más espacio para el menú */
+    display: flex;
+    /* Flexbox para el menú */
+    align-items: center;
+    /* Centrar verticalmente */
+}
+
+.menu-icon {
+    display: none;
+    /* Ocultar el icono de hamburguesa por defecto */
+    font-size: 30px;
+    /* Tamaño del icono de hamburguesa */
+    cursor: pointer;
+    /* Cambiar cursor al pasar sobre el icono */
+}
+
+nav ul {
     list-style-type: none;
     display: flex;
-    justify-content: center;
     gap: 20px;
+    justify-content: center;
+    /* Centrar el menú horizontalmente */
 }
 
-header nav ul li {
+nav ul li {
     display: inline;
 }
 
-header nav ul li a {
-    color: white;
+nav ul li a {
+    color: #00B2A9;
+    /* Aqua para los enlaces */
     text-decoration: none;
     font-weight: bold;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Filtros Styles */
-#filtros {
+/* Search Container Styles */
+.search-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 20px 0;
+    flex: 2;
+    /* Tomar espacio para la barra de búsqueda */
+    justify-content: flex-end;
+    /* Alinear la búsqueda a la derecha */
 }
 
 #buscador {
     padding: 10px;
-    width: 200px;
-    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: #333;
+    /* Color del texto del buscador */
 }
 
 select {
     padding: 10px;
-    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Sección Sobre Nosotros */
+section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2em;
+    margin: 2em 0;
+    background-color: #ffffff;
+    /* Fondo blanco para secciones */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+}
+
+h2 {
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    color: #00B2A9;
+    /* Color aqua para los títulos */
+}
+
+p {
+    margin: 1em 0;
+    line-height: 1.6;
+    /* Espaciado entre líneas */
+}
+
+/* Estilos para el formulario de contacto */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 1em;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-top: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    margin-top: 1em;
+    background-color: #4CAF50;
+    /* Verde para el botón */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+    /* Tono más oscuro al pasar el mouse */
 }
 
 /* Section Styles */
@@ -78,6 +187,7 @@ select {
     margin-bottom: 1em;
     font-size: 2em;
     color: #333;
+    /* Texto oscuro para el título */
 }
 
 #productos {
@@ -95,7 +205,8 @@ select {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
-    background-color: white;
+    background-color: #ffffff;
+    /* Fondo blanco para las tarjetas de producto */
     transition: transform 0.3s ease;
 }
 
@@ -127,6 +238,7 @@ select {
     text-decoration: none;
     color: white;
     background-color: #4CAF50;
+    /* Verde para los enlaces dentro de la tarjeta */
     padding: 10px 16px;
     border-radius: 4px;
     font-size: 14px;
@@ -135,16 +247,20 @@ select {
 
 .producto a:hover {
     background-color: #45a049;
+    /* Tono más oscuro al pasar el mouse */
 }
 
 /* Footer Styles */
 footer {
     width: 100%;
-    background-color: #333;
+    background-color: #444;
+    /* Fondo más claro que antes para el footer */
     color: white;
     padding: 1em 0;
     text-align: center;
     margin-top: auto;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    /* Sombra para el footer */
 }
 
 footer p {
@@ -152,7 +268,8 @@ footer p {
 }
 
 footer a {
-    color: #4CAF50;
+    color: #00B2A9;
+    /* Aqua para los enlaces del footer */
     text-decoration: none;
 }
 
@@ -162,14 +279,53 @@ footer a:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    #filtros {
+    .header-container {
         flex-direction: column;
+        /* Cambiar a columna en dispositivos pequeños */
+        align-items: flex-start;
+        /* Alinear a la izquierda */
+        width: 100%;
+        /* Ocupando todo el ancho */
+    }
+
+    .menu-icon {
+        display: block;
+        /* Mostrar el icono de hamburguesa en móviles */
+    }
+
+    nav ul {
+        display: none;
+        /* Ocultar el menú por defecto */
+        flex-direction: column;
+        /* Hacer el menú vertical */
+        align-items: flex-start;
+        /* Alinear a la izquierda */
+        width: 100%;
+        /* Ocupando todo el ancho */
+        padding: 0;
+        /* Sin padding */
+    }
+
+    nav ul.show {
+        display: flex;
+        /* Mostrar el menú cuando se active */
+    }
+
+    .search-container {
+        flex-direction: column;
+        /* Colocar elementos en columna en dispositivos pequeños */
+        align-items: flex-start;
+        /* Alinear a la izquierda */
+        margin-top: 10px;
+        /* Espacio entre el menú y la búsqueda */
     }
 
     #buscador,
     select {
         width: 100%;
         max-width: 300px;
+        margin-bottom: 10px;
+        /* Espacio entre los elementos */
     }
 
     #productos {
