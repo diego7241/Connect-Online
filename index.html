@@ -86,10 +86,17 @@
                     <h3>${nombre.trim()}</h3>
                     <p>${descripcion.trim()}</p>
                     <p>Precio: ${precio.trim()}</p>
-                    <a href="https://wa.me/51${contacto.trim()}" target="_blank">Contáctanos por WhatsApp</a>
+                    <a href="#" onclick="contactarWhatsApp('${nombre.trim()}', '${precio.trim()}', '${contacto.trim()}')">Contáctanos por WhatsApp</a>
                 `;
                 contenedor.appendChild(tarjeta);
             });
+        }
+
+        function contactarWhatsApp(producto, precio, contacto) {
+            const mensaje = `Hola, estoy interesado en ${producto} que cuesta ${precio}.`;
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const enlaceWhatsApp = `https://wa.me/51${contacto}?text=${mensajeCodificado}`;
+            window.open(enlaceWhatsApp, '_blank'); // Abre el enlace en una nueva pestaña
         }
 
         function filtrarProductos() {
